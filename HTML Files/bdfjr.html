@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(#87cefa, #ffffff);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      min-height: 100vh;
+    }
+
+    h1 {
+      position: absolute;
+      top: 30%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 3em;
+      color: #ff69b4;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      animation: pop 1.5s ease-out forwards;
+      margin: 0;
+      padding: 0;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 50px;
+      height: 70px;
+      background-color: red;
+      border-radius: 50% 50% 45% 45%;
+      animation: float 6s ease-in forwards;
+      transform-origin: center;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 20px;
+      background-color: #333;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy Birthday! 🎂</h1>
+
+  <script>
+    function randomColor() {
+      const colors = ['#ff69b4', '#ff6347', '#ffa500', '#8a2be2', '#00ced1', '#32cd32'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+      balloon.style.left = Math.random() * 100 + 'vw';
+      balloon.style.backgroundColor = randomColor();
+      balloon.style.animationDuration = (4 + Math.random() * 3) + 's';
+      document.body.appendChild(balloon);
+
+      // Remove balloon after animation completes
+      balloon.addEventListener('animationend', function() {
+        balloon.remove();
+      });
+    }
+
+    // Start balloon creation
+    setInterval(createBalloon, 400);
+
+    // Clean up balloons if too many exist
+    setInterval(() => {
+      const balloons = document.querySelectorAll('.balloon');
+      if (balloons.length > 50) {
+        balloons[0].remove();
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
