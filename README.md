@@ -39,7 +39,7 @@ Isme AI support, mandi-price data aur smart trading system sab ek hi jagah milta
 
 | Layer | Technologies |
 |-------|-------------|
-| **Frontend** | HTML, CSS, React |
+| **Frontend** | HTML, CSS, JavaScript |
 | **Backend** | JavaScript, Python |
 | **Database** | PHP |
 | **AI Model** | Hugging Face Pre-trained Model |
